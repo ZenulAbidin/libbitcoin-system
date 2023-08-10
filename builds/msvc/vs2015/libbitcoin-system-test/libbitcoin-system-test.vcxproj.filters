@@ -177,6 +177,9 @@
     <ClCompile Include="..\..\..\..\test\crypto\ring_signature.cpp">
       <Filter>src\crypto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\test\crypto\secure_random.cpp">
+      <Filter>src\crypto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\test\crypto\siphash.cpp">
       <Filter>src\crypto</Filter>
     </ClCompile>

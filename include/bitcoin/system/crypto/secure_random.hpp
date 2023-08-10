@@ -16,15 +16,13 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
- // THIS MODULE IS DEPRECATED BECAUSE OF CVE-2023-39910.
- // FOR MORE INFORMATION, SEE https://milksad.info/
-#ifndef LIBBITCOIN_SYSTEM_CRYPTO_PSEUDO_RANDOM_HPP
-#define LIBBITCOIN_SYSTEM_CRYPTO_PSEUDO_RANDOM_HPP
+#ifndef LIBBITCOIN_SYSTEM_CRYPTO_SECURE_RANDOM_HPP
+#define LIBBITCOIN_SYSTEM_CRYPTO_SECURE_RANDOM_HPP
 
 #include <algorithm>
 #include <chrono>
 #include <random>
+#include <boost/random.hpp> // Include Boost's random library
 #include <bitcoin/system/data/data.hpp>
 #include <bitcoin/system/define.hpp>
 #include <bitcoin/system/math/math.hpp>
@@ -32,7 +30,7 @@
 namespace libbitcoin {
 namespace system {
 
-class BC_API pseudo_random
+class BC_API secure_random
 {
   public:
     /// Fill a byte array with randomness using the default random engine.
@@ -49,22 +47,22 @@ class BC_API pseudo_random
     /// Fill a byte vector with randomness using the default random engine.
     static void fill(data_chunk& out) NOEXCEPT;
 
-    /// Generate a pseudo random number within the uint8_t domain.
+    /// Generate a secure random number within the uint8_t domain.
     /// Specialized: uniform_int_distribution is undefined for sizes < 16 bits.
     static uint8_t next() NOEXCEPT;
 
-    /// Generate a pseudo random number within [begin, end].
+    /// Generate a secure random number within [begin, end].
     /// Specialized: uniform_int_distribution is undefined for sizes < 16 bits.
     static uint8_t next(uint8_t begin, uint8_t end) NOEXCEPT;
 
-    /// Generate a pseudo random number within the Type domain.
+    /// Generate a secure random number within the Type domain.
     template<typename Type, if_integer<Type> = true>
     static Type next() NOEXCEPT
     {
         return next(minimum<Type>, maximum<Type>);
     }
 
-    /// Generate a pseudo random integer value within [begin, end].
+    /// Generate a secure random integer value within [begin, end].
     template<typename Integer, if_integer<Integer> = true>
     static Integer next(Integer begin, Integer end) NOEXCEPT
     {
@@ -73,14 +71,14 @@ class BC_API pseudo_random
             return {};
 
         std::uniform_int_distribution<Integer> distribution(begin, end);
-        return distribution(get_twister());
+        return distribution(get_csrng());
     }
 
     /// Shuffle a container elements using the random engine.
     template<class Container>
     static void shuffle(Container& out) NOEXCEPT
     {
-        std::shuffle(out.begin(), out.end(), get_twister());
+        std::shuffle(out.begin(), out.end(), get_csrng());
     }
 
     /// Convert a time duration to a value in the range [max/ratio, max].
@@ -91,8 +89,12 @@ class BC_API pseudo_random
         const std::chrono::steady_clock::duration& maximum,
         uint8_t ratio=2) NOEXCEPT;
 
-private:
-    static std::mt19937& get_twister() NOEXCEPT;
+  private:
+    static boost::random::independent_bits_engine<boost::random::random_device, CHAR_BIT, uint32_t>& get_csrng() NOEXCEPT
+    {
+        static boost::random::independent_bits_engine<boost::random::random_device, CHAR_BIT, uint32_t> csrng;
+        return csrng;
+    }
 };
 
 } // namespace system

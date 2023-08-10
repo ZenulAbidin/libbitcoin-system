@@ -198,6 +198,9 @@
     <ClCompile Include="..\..\..\..\test\crypto\ring_signature.cpp">
       <Filter>src\crypto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\test\crypto\secure_random.cpp">
+      <Filter>src\crypto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\test\data\array_cast.cpp">
       <Filter>src\data</Filter>
     </ClCompile>

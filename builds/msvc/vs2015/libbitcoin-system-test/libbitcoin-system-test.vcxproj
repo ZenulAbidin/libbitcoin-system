@@ -109,6 +109,7 @@
     <ClCompile Include="..\..\..\..\test\crypto\intrinsics\intrinsics.cpp" />
     <ClCompile Include="..\..\..\..\test\crypto\pseudo_random.cpp" />
     <ClCompile Include="..\..\..\..\test\crypto\ring_signature.cpp" />
+    <ClCompile Include="..\..\..\..\test\crypto\secure_random.cpp" />
     <ClCompile Include="..\..\..\..\test\crypto\siphash.cpp" />
     <ClCompile Include="..\..\..\..\test\data\collection.cpp" />
     <ClCompile Include="..\..\..\..\test\data\data_array.cpp" />

@@ -76,6 +76,7 @@ src_libbitcoin_system_la_SOURCES = \
     src/crypto/golomb_coding.cpp \
     src/crypto/pseudo_random.cpp \
     src/crypto/ring_signature.cpp \
+    src/crypto/secure_random.cpp \
     src/crypto/secp256k1.cpp \
     src/data/data_chunk.cpp \
     src/data/string.cpp \
@@ -245,6 +246,7 @@ test_libbitcoin_system_test_SOURCES = \
     test/crypto/elliptic_curve.cpp \
     test/crypto/pseudo_random.cpp \
     test/crypto/ring_signature.cpp \
+    test/crypto/secure_random.cpp \
     test/data/array_cast.cpp \
     test/data/byte_cast.cpp \
     test/data/collection.cpp \
