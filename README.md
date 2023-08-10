@@ -181,6 +181,7 @@ Dependencies apart from the libbitcoin libraries are available as [NuGet package
   * [boost\_log](http://www.nuget.org/packages/boost_log-vc120)
   * [boost\_log_setup](http://www.nuget.org/packages/boost_log_setup-vc120)
   * [boost\_program\_options](http://www.nuget.org/packages/boost_program_options-vc120)
+  * [boost\_random](http://www.nuget.org/packages/boost_random-vc120)
   * [boost\_regex](http://www.nuget.org/packages/boost_regex-vc120)
   * [boost\_system](http://www.nuget.org/packages/boost_system-vc120)
   * [boost\_thread](http://www.nuget.org/packages/boost_thread-vc120)

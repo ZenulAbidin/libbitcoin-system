@@ -390,6 +390,10 @@ AX_BOOST_PROGRAM_OPTIONS
 AC_SUBST([boost_program_options_LIBS], [${BOOST_PROGRAM_OPTIONS_LIB}])
 AC_MSG_NOTICE([boost_program_options_LIBS : ${boost_program_options_LIBS}])
 
+AX_BOOST_RANDOM
+AC_SUBST([boost_random_LIBS], [${BOOST_RANDOM_LIB}])
+AC_MSG_NOTICE([boost_random_LIBS : ${boost_random_LIBS}])
+
 AX_BOOST_SYSTEM
 AC_SUBST([boost_system_LIBS], [${BOOST_SYSTEM_LIB}])
 AC_MSG_NOTICE([boost_system_LIBS : ${boost_system_LIBS}])
